@@ -42,29 +42,29 @@ alias fw := full-write
 
 # Check Python formatting and linting with ruff
 [group("checks")]
-ruff-check:
+@ruff-check:
     uv run ruff check .
     uv run ruff format --check .
 
 # Auto-fix Python formatting and linting with ruff
 [group("checks")]
-ruff-write:
+@ruff-write:
     uv run ruff check --fix .
     uv run ruff format .
 
 # Check types with pyright
 [group("checks")]
-pyright-check:
+@pyright-check:
     uv run pyright
 
 # Check Markdown formatting with prettier (readonly)
 [group("checks")]
-prettier-check:
+@prettier-check:
     npx prettier --check "**/*.{json,jsonc,md}"
 
 # Auto-fix Markdown formatting with prettier
 [group("checks")]
-prettier-write:
+@prettier-write:
     npx prettier --write --log-level warn "**/*.{json,jsonc,md}"
 
 # ---------------------------------------------------------------------------- #
@@ -72,7 +72,6 @@ prettier-write:
 # ---------------------------------------------------------------------------- #
 
 # Private recipe to run a check with formatted output
-[no-cd]
 @_run-with-status recipe:
     echo ""
     echo -e '{{ CYAN }}→ Running {{ recipe }}...{{ NORMAL }}'
